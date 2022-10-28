@@ -18,7 +18,6 @@ def x1():
     again=exit()
     
     
-    
 #makes graph option two supposed to be bar graph
 def refineData(data,bd,ed,function):
     list1=[]
@@ -149,7 +148,6 @@ def datesSelect():
     while check==False:
         answer1 = input("Enter the beginning date (Format:YYYY-MM-DD): ")
         answer2 = input("Enter the end date (Format:YYYY-MM-DD): ")
-       
         x = int(answer1[0:4])
         x1 = int(answer1[5:7])
         x2 = int(answer1[8:10])
@@ -167,9 +165,7 @@ def datesSelect():
         else:
             print("\nStart date must be before end date, try again: \n")
             check=False
-
     return answer1,answer2
-
 
 #general question function returns user answers calls datesSelect, chartTypeSelect, and timeSeriesSelect
 def questions():
@@ -204,7 +200,7 @@ def apiRequest(function,symbol,apikey):
         return data
 
 
-#asks user if they want to run the program again
+    #asks user if they want to run the program again
 
 def exit():
     while(True):
@@ -216,4 +212,3 @@ def exit():
     
     
 main()
-
