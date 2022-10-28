@@ -18,8 +18,6 @@ def x1():
     
     
 #makes graph option two supposed to be bar graph
-#this function doesn't work right yet
-#the line line_chart.x_labels.... is wrong needs to be changed to get correct date ranges
 def refineData(data,bd,ed,function):
     list1=[]
     format1=""
