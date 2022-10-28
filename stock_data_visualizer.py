@@ -3,6 +3,7 @@ import json
 import midtermstruct4320
 import pygal
 import datetime
+import time
 def main():
     x1()
 #calls all the main functions
@@ -15,6 +16,7 @@ def x1():
     test2=json.loads(test)
     data7=refineData(test2,bd,ed,function)
     graph1=makeGraph(chart,data7,bd,ed,symbol,function)
+    again=exit()
     
     
 #makes graph option two supposed to be bar graph
@@ -141,12 +143,24 @@ def chartTypeSelect():
             check=False
     return answer
 
+def datesCheck():
+    while True:
+        try:
+            answer1 = input("Enter the beginning date (Format:YYYY-MM-DD): ")
+            answer2 = input("Enter the end date (Format:YYYY-MM-DD): ")
+            time.strptime(answer1, '%Y-%m-%d')
+            time.strptime(answer2, '%Y-%m-%d')
+        except:
+            print("Invalid entry please try again: \n")
+            continue
+        else:
+            return answer1,answer2
+
 #user chooses dates, checks to make sure second is not before first, returns dates still in string
 def datesSelect():
     check=False
     while check==False:
-        answer1 = input("Enter the beginning date (Format:YYYY-MM-DD): ")
-        answer2 = input("Enter the end date (Format:YYYY-MM-DD): ")
+        answer1,answer2=datesCheck()
         x = int(answer1[0:4])
         x1 = int(answer1[5:7])
         x2 = int(answer1[8:10])
@@ -159,6 +173,7 @@ def datesSelect():
         days = x5-x2
         #print(days,months,years)
         total=((years*365)+(months*30)+(days))
+        
         if total>=0:
             check=True
         else:
@@ -197,7 +212,15 @@ def apiRequest(function,symbol,apikey):
         r = requests.get(url)
         data = r.json()
         return data
-    
+#asks user if they want to run the program again
+
+def exit():
+    while(True):
+        x = input("Would you like to view more stock data? Press 'y' to continue, or 'n' to exit: ")
+        if x == 'y':
+            return main()
+        else:
+            break
+        
     
 main()
-
